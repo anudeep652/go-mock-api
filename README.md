@@ -18,8 +18,14 @@ run the server and db
 docker compose up -d
 ```
 
+or just run the below make command to build the image and run the server and db
+
+```bash
+make build-run
+```
+
 stop the server and db
 
 ```bash
-docker compose down
+docker compose down #or just run `make stop`
 ```

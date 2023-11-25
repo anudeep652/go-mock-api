@@ -1,15 +1,11 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
+	"github.com/anudeep652/go-mock-api/api"
 )
 
 func main() {
-	app := fiber.New()
-
-	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!")
-	})
+	app := api.Server()
 
 	app.Listen(":3000")
 }

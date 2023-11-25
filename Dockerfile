@@ -12,7 +12,9 @@ COPY . ./
 
 
 # Build
-RUN CGO_ENABLED=0 GOOS=linux make build
+RUN CGO_ENABLED=0 GOOS=linux
+RUN go install github.com/mitranim/gow@latest
 
 # Run
-CMD ["bin/go-mock-api"]
+# CMD ["bin/go-mock-api"]
+CMD ["gow","run","main.go"]
