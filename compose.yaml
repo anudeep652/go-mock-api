@@ -1,0 +1,12 @@
+services:
+  server:
+    build: .
+    ports: 
+      - "3000:3000"
+
+  redis:
+    image: redis:alpine
+    volumes:
+      - db:/data      
+volumes:
+  db: 

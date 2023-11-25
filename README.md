@@ -4,16 +4,16 @@ A simple mock api server written in go with rate limiting and authentication wit
 
 ## Usage
 
-### docker
+### docker compose
 
 build the image
 
 ```bash
-docker build -t go-mock-api .
+docker compose up -d
 ```
 
 run the container
 
 ```bash
-docker run -p 3000:3000 go-mock-api
+docker compose down
 ```
