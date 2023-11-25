@@ -8,8 +8,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Copy source code
-COPY *.go ./
-COPY Makefile ./ 
+COPY . ./
+
 
 # Build
 RUN CGO_ENABLED=0 GOOS=linux make build

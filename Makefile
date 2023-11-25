@@ -6,3 +6,6 @@ build:
 
 test:
 	@go test -v ./...
+
+docker-build:
+	@docker build -t go-mock-api .

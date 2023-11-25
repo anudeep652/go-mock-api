@@ -6,6 +6,12 @@ A simple mock api server written in go with rate limiting and authentication wit
 
 ### docker compose
 
+build the image
+
+```bash
+make docker-build
+```
+
 run the server and db
 
 ```bash
