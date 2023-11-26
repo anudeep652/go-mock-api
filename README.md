@@ -9,13 +9,13 @@ A simple mock api server written in go with rate limiting and authentication wit
 run the server and db
 
 ```bash
-make run # or docker-compose up
+make run # or docker compose up -d
 ```
 
 stop the server and db
 
 ```bash
-make stop # or docker-compose down
+make stop # or docker compose down
 ```
 
 Now you can access the server at http://localhost:3000
