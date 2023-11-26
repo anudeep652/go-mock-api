@@ -15,7 +15,7 @@ func Server() *fiber.App {
 
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {
-		return c.SendString("Hello, World!1")
+		return c.SendString("Hello, World!")
 	})
 
 	v1 := app.Group("/api/v1")

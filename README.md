@@ -6,26 +6,16 @@ A simple mock api server written in go with rate limiting and authentication wit
 
 ### docker compose
 
-build the image
-
-```bash
-make docker-build
-```
-
 run the server and db
 
 ```bash
-docker compose up -d
-```
-
-or just run the below make command to build the image and run the server and db
-
-```bash
-make build-run
+make run # or docker-compose up
 ```
 
 stop the server and db
 
 ```bash
-docker compose down #or just run `make stop`
+make stop # or docker-compose down
 ```
+
+Now you can access the server at http://localhost:3000
