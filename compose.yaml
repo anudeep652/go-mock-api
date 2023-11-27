@@ -15,6 +15,9 @@ services:
     ports:
       - "6378:6379"
     volumes:
-      - go-mock-api_db:/data      
+      - go-mock-api_db:/data     
+    environment:
+      REDIS_ARGS: --save 20 1 
 volumes:
   go-mock-api_db:
+    external: false
