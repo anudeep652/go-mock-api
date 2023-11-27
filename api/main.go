@@ -1,6 +1,7 @@
 package api
 
 import (
+	"fmt"
 	"log"
 
 	"github.com/gofiber/fiber/v2"
@@ -12,6 +13,9 @@ type User struct {
 }
 
 func Server() *fiber.App {
+	rc := initDb()
+	fmt.Println("All users:")
+	rc.GetAllUsers()
 
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {
@@ -27,9 +31,19 @@ func Server() *fiber.App {
 			c.Status(fiber.StatusBadRequest)
 			return c.JSON(fiber.Map{"status": "error", "error": err})
 		}
-		return c.SendString("Signup")
+
+		err := rc.SignUp(user.Name, user.Pass, c.Context())
+
+		if err != nil {
+			fmt.Println(err)
+			c.Status(fiber.StatusBadRequest)
+			return c.JSON(fiber.Map{"status": "error", "error": "Something went wrong"})
+		}
+
+		rc.GetAllUsers()
+
+		return c.SendString("Signup Success")
 	})
 
 	return app
-
 }
