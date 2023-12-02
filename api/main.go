@@ -14,8 +14,6 @@ type User struct {
 
 func Server() *fiber.App {
 	rc := initDb()
-	fmt.Println("All users:")
-	rc.GetAllUsers()
 
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {

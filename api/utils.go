@@ -2,6 +2,7 @@ package api
 
 import (
 	"log"
+	"math/rand"
 
 	"golang.org/x/crypto/bcrypt"
 )
@@ -20,4 +21,14 @@ func comparePassword(hashedPassword string, password string) bool {
 		return false
 	}
 	return true
+}
+
+func GenerateApiKey() string {
+
+	k := make([]byte, API_KEY_LENGTH)
+	for i, _ := range k {
+		k[i] = CHARSET[rand.Intn(len(CHARSET))]
+
+	}
+	return string(k)
 }

@@ -15,9 +15,9 @@ func initDb() *Rc {
 	// initialize redis client
 	var rdb Rc
 	rdb.redisClient = redis.NewClient(&redis.Options{
-		Addr:     "go-mock-api_redis_1:6379",
-		Password: "", // no password set
-		DB:       0,  // use default DB
+		Addr:     "go-mock-api_redis_1:6379", // server can access redis container by it's hostname
+		Password: "",                         // no password set
+		DB:       0,                          // use default DB
 	})
 	fmt.Println(rdb.redisClient)
 	return &rdb
