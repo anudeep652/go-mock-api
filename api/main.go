@@ -1,6 +1,7 @@
 package api
 
 import (
+	"context"
 	"fmt"
 	"log"
 
@@ -18,6 +19,17 @@ func Server() *fiber.App {
 	app := fiber.New()
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.SendString("Hello, World!")
+	})
+
+	app.Get("/users", func(c *fiber.Ctx) error {
+		fmt.Println("users")
+		users, err := rc.GetAllUsers(context.Background())
+		if err != nil {
+			fmt.Println(err)
+			return c.JSON(fiber.Map{"status": "error", "error": "Something went wrong"})
+		}
+
+		return c.JSON(fiber.Map{"users": users})
 	})
 
 	v1 := app.Group("/api/v1")
@@ -38,9 +50,19 @@ func Server() *fiber.App {
 			return c.JSON(fiber.Map{"status": "error", "error": "Something went wrong"})
 		}
 
-		rc.GetAllUsers()
+		rc.GetAllUsers(context.Background())
 
 		return c.SendString("Signup Success")
+	})
+
+	v1.Get("/new-api-token", func(c *fiber.Ctx) error {
+		// TODO: verify user
+		if !rc.IsUser(context.Background(), "anudeep1") {
+			fmt.Println("Invalid user")
+			return c.JSON(fiber.Map{"status": "error", "message": "Invalid user"})
+		}
+		apiKey := GenerateApiKey()
+		return c.JSON(fiber.Map{"status": "success", "api_key": apiKey})
 	})
 
 	return app

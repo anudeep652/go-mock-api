@@ -17,3 +17,6 @@ docker-build:
 build-run:
 	@make docker-build
 	@make run
+
+server-logs:
+	@docker compose logs -f -t server 

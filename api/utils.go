@@ -32,3 +32,8 @@ func GenerateApiKey() string {
 	}
 	return string(k)
 }
+
+func isValidUser(username string, password string) bool {
+
+	return false
+}
